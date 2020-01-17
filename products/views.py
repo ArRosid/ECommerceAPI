@@ -10,3 +10,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 class ProductFeaturedList(generics.ListAPIView):
     queryset = models.Product.objects.featured()
     serializer_class = serializers.ProductSerializer
+
+class ProductActiveList(generics.ListAPIView):
+    queryset = models.Product.objects.active()
+    serializer_class = serializers.ProductSerializer
