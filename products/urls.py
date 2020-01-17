@@ -7,5 +7,6 @@ router = DefaultRouter()
 router.register("products", views.ProductViewSet)
 
 urlpatterns = [
-    path("", include(router.urls))
+    path("products/featured/", views.ProductFeaturedList.as_view(), name="product-featured"),
+    path("", include(router.urls)),
 ]
