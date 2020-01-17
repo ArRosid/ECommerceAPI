@@ -1,7 +1,9 @@
 import os
 import random
-from datetime import datetime
 import string
+from datetime import datetime
+
+from rest_framework.pagination import PageNumberPagination
 
 ALPHANUMERIC_CHARS = string.ascii_lowercase + string.digits
 STRING_LENGTH = 6
@@ -23,3 +25,16 @@ def upload_image_path(instance, filename):
 
 def generate_random_string(chars=ALPHANUMERIC_CHARS, length=STRING_LENGTH):
     return "".join(random.choice(chars) for _ in range(length))
+
+
+class SmallResultPagination(PageNumberPagination):
+    page_size = 5
+    page_size_query_param = "page_size"
+
+class StandardResultPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = "page_size"
+
+class LargeResultPagination(PageNumberPagination):
+    page_size = 100
+    page_size_query_param = "page_size"
